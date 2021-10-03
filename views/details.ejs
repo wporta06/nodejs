@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+
+<html lang="ar">
+
+<!-- the head -->
+<%- include("./partials/head")  %>
+
+    <body id="body">
+
+        <!-- the header -->
+        <%- include("./partials/header")  %>
+
+            <main id="main">
+                <section>
+                    <h1>
+                        <%= objArticle.title %> &#128293;
+                    </h1>
+
+                    <p class="artp">
+                        <%= objArticle.body%>
+                    </p>
+                    <button data-linkid='<%=objArticle._id%>' class="create"> <a >DELETE</a></button>
+                </section>
+
+            </main>
+
+            <!-- the footer -->
+            <%- include("./partials/footer")  %>
+
+    </body>
+
+    <script>
+        const btnelement = document.querySelector(".create")
+        const articleId = btnelement.getAttribute("data-linkid");
+
+
+        // what is data ?
+        // answerrrrrrrrrrrrrrrrrr { mylink: "/all-articles" }
+
+
+        btnelement.addEventListener("click", (eo) => {
+
+            fetch(`/all-articles/${articleId}`, {
+                    method: "DELETE"
+                }).then((response) => response.json())
+                .then((data) => window.location.href = data.mylink)
+                .catch((err) => {
+                    console.log(err);
+                });
+
+        })
+    </script>
+
+</html>

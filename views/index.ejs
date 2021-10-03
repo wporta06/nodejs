@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+
+<html lang="ar">
+
+<!-- the head -->
+<%- include("./partials/head")  %>
+
+    <body id="body">
+        <!-- the header -->
+        <%- include("./partials/header")  %>
+
+            <main id="main">
+                <section>
+                    <h1>
+                        Trending Articles &#128293;
+                    </h1>
+
+
+                    <div class="parent-of-articles">
+                        <% arrArticle.forEach(item =>{ %>
+                            <article>
+                                <h2 contenteditable>
+                                    <%= item.title %>
+                                </h2>
+
+
+                                <p>
+                                    <%= item.summary %>
+
+                                        <!-- send id of the article to app.js-->
+                                        <a class="btn" href="/all-articles/<%= item._id %>">show more</a>
+                                </p>
+                            </article>
+
+                            <% }) %>
+
+                    </div>
+
+
+                </section>
+
+
+
+            </main>
+
+            <%- include("./partials/footer")  %>
+
+
+    </body>
+
+</html>
